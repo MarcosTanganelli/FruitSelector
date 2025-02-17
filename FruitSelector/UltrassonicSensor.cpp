@@ -5,8 +5,9 @@ UltrassonicSensor::UltrassonicSensor(int maxDist, int pinEcho, int pinTrigger)
 }
 
 bool UltrassonicSensor::StopMotor() {
-    if(sonar.ping_cm() != 0)
-        return true;
-    else
-        return false;
+  // Serial.print(sonar.ping_cm());
+  if(sonar.ping_cm() != 0)
+      return true;
+  else
+      return false;
 }
