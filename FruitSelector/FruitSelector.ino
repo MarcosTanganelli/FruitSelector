@@ -7,12 +7,12 @@ Motor MotorPassos(2,3);
 UltrassonicSensor UltraSensor(15, 11, 12);
 ComunicationPort Com;
 Servo meuServo;
+int flag = 0;
 
 void setup() {
   Serial.begin(115200);
-
   meuServo.attach(6);
-  // MotorPassos.StartMotor();
+  MotorPassos.StartMotor();
 }
 
 void loop() {
@@ -35,17 +35,21 @@ void loop() {
   //   myServo.SetPos(0);
   //   delay(500);
 
-  // if(UltraSensor.StopMotor()){
-  //   Serial.print("PARA!!! \n");
-  //   MotorPassos.StopMotor();
-  //   // adicionar delay aqui caso necessário e logo depois no final do else
-  // }else{
-  //   MotorPassos.RunMotor();
-  // }        
+  if(UltraSensor.StopMotor()){
+    if (flag == 0){
+      Serial.print("TRIGGER\n");
+      flag = 1;
+    }
+    // MotorPassos.StopMotor();
+    // adicionar delay aqui caso necessário e logo depois no final do else
+  }else{
+    flag = 0;
+    MotorPassos.RunMotor();
+  }        
   // if (Serial.available() > 0) {  // Verifica se recebeu algo
   //   String recebido = Serial.readStringUntil('\n');
   //   MotorPassos.StopMotor();
   //   Serial.print("Recebido: ");
   //   Serial.println(recebido);
-  // }     
+  // }
 }
