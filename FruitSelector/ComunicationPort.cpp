@@ -15,6 +15,7 @@ int ComunicationPort::ReceivedFruits() {
     if (recebido == "F0") return 0;
     if (recebido == "F1") return 1;
     if (recebido == "F2") return 2;
+    if (recebido == "F4") return 4;
   }
 
   return -1;  // Retorna -1 caso o valor recebido não seja válido

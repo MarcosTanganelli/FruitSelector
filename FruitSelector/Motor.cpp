@@ -11,12 +11,18 @@ Motor::Motor(int pinDir, int pinStep)
 
 void Motor::StartMotor() {
   Stepper.setMaxSpeed(1000);   // Velocidade máxima
-  // Stepper.setAcceleration(50); // Aceleração
-  Stepper.setSpeed(1000); // Velocidade regular
+  Stepper.setSpeed(-150); // Velocidade regular
 }
 
 void Motor::RunMotor() {
+    Stepper.setMaxSpeed(1000);   // Velocidade máxima
+    Stepper.setSpeed(-150); // Velocidade regular
     Stepper.runSpeed();
+}
+
+void Motor::ReverseMotor(){
+  Stepper.setSpeed(200);
+  Stepper.runSpeed();
 }
 
 void Motor::StopMotor() {
